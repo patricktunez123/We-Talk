@@ -18,23 +18,36 @@ class Signup extends Component {
       <main className={classes.main}>
         <CssBaseline></CssBaseline>
         <Paper className={classes.paper}>
-          <Typography component="h1" variant="h5">
-            Sign Up
-          </Typography>
+          <Typography component="h1" variant="h5"> Sign Up </Typography>
 
           <form onSubmit={(event) => this.submitSignUp(event)} className={classes.form}>
-            <FormControl>
-              <InputLabel required fullwidth margin="normal">Your email</InputLabel>
-              <Input></Input>
+            <FormControl  required fullWidth margin='normal'>
+              <InputLabel htmlFor='email-signup'>Your email</InputLabel>
+              <Input autoComplete='email' onChange={(event) => this.userIsTyping('email', event)} autoFocus id='email-signup'></Input>
             </FormControl>
+
+            <FormControl required fullWidth margin='normal'>
+              <InputLabel htmlFor='password-signup'>Create a password</InputLabel>
+              <Input type='password' onChange={(event) => this.userIsTyping('password', event)} id='password-signup'></Input>
+            </FormControl>
+
+            <FormControl required fullWidth margin='normal'>
+              <InputLabel htmlFor='password-comfirm'>Re-enter the password</InputLabel>
+              <Input type='password' onChange={(event) => this.userIsTyping('passwordComfirmation' ,event)} id='password-comfirm'></Input>
+            </FormControl>
+
+            <Button fullWidth variant='contained' color='primary' className={classes.submit}>Create account</Button>
           </form>
         </Paper>
       </main>
     );
   }
 
+  userIsTyping = (typing, event) => {
+    console.log(typing, event)
+  }
   submitSignUp = (event) => {
-
+    console.log('submited')
   }
 }
  
